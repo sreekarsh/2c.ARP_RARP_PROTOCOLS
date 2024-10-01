@@ -44,32 +44,7 @@ while True:
  s.send(ip.encode())
  print("MAC Address",s.recv(1024).decode())
 ```
-## PROGRAM - RARP
-### Client:
-```
-import socket
-s=socket.socket()
-s.bind(('localhost',9000))
-s.listen(5)
-c,addr=s.accept()
-address={"6A:08:AA:C2":"192.168.1.100","8A:BC:E3:FA":"192.168.1.99"};
-while True:
- ip=c.recv(1024).decode()
- try:
-   c.send(address[ip].encode())
- except KeyError:
-   c.send("Not Found".encode())
-```
-### Server:
-```
-import socket
-s=socket.socket()
-s.connect(('localhost',9000))
-while True:
- ip=input("Enter MAC Address : ")
- s.send(ip.encode())
- print("Logical Address",s.recv(1024).decode())
-```
+
 ## OUPUT - ARP
 ![image](https://github.com/Yuvaranithulasingam/2c.ARP_RARP_PROTOCOLS/assets/121418522/f1672c11-b0d6-4d4a-b076-d81b505c4e50)
 
